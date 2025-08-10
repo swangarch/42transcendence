@@ -4,9 +4,18 @@ built with a microservice architecture, WebSocket real-time communication, and s
 
 ## 🕹️Features:
 Account management, enable/disable 2FA, JWT session management, Google sign in, upload avatar, prevent SQL injection / XSS attack
+![Login demo](doc/login.jpg)
+![User demo](doc/user.jpg)
 Local play vs AI, local play with 2 players, remote play, tournament, game records, ranking
+![Game demo](doc/stage1.jpg)
+![Game demo](doc/stage2.jpg)
+![Game demo](doc/tournament.jpg)
+![Game demo](doc/record.jpg)
 Add/remove friend, friend status, game dashboard
+![Friend demo](doc/friend1.jpg)
+![Friend demo](doc/friend2.jpg)
 3D game stage, friendly and intuitive UI, real time update to enhance user experience
+![Main page](doc/main.jpg)
 Handle unexpected disconnections.
 
 ## 🧰 Tech Stack
