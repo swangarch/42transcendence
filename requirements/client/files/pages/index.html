@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/main.final.css" >
+    <link rel="stylesheet" href="css/fonts.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ft_transcendence</title>
+    <script src="script/env.js"></script>
+    <script src="https://accounts.google.com/gsi/client" defer></script>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://kit.fontawesome.com/03d22adc67.js" crossorigin="anonymous"></script>
+    <script src="script/authPages.js" defer></script>
+    <script src="script/notificationManager.js" defer></script>  
+    <script src="script/friendInfo.js" defer></script>
+    <script src="script/tournament.js" defer></script>
+    <script src="script/matchHistory.js" defer></script>
+    <script src="script/msgSocket.js" defer></script>
+    <script src="script/gameSocket.js" defer></script>
+    <script src="script/account.js" defer></script>
+    <script src="script/ui.js" defer></script>
+    <script src="script/usermenu.js" defer></script>
+    <script src="script/modeContainer.js" defer></script>
+    <script src="script/multipleLanguages.js" defer></script>
+    <script src="script/leaderBoard.js" defer></script>
+  </head>
+
+  <body>
+    <div class="title relative">
+      <div id="titleText" onclick="scene_to_main_page()">
+        <h1>ft_transcendence</h1>
+      </div>
+
+      <div class="nav-elements-container">
+        <!-- Language selector always visible -->
+        <div class="lang-selector-wrapper">
+          <select id="langSelector" class="bg-white/90 border border-solid rounded-[30px] text-lg px-4">
+              <option value="en">English</option>
+              <option value="fr">Français</option>
+              <option value="zh">中文</option>
+          </select>
+        </div>
+
+        <div class="nav-button-wrapper" style="display: none;">
+          <button class="icon-button" id="notif-button" onclick="handle_friend_req_notif()">
+            <i class="fa-regular fa-bell text-lg"></i>
+            <span id="notfi-dot" class="notification-dot" display="none">0</span>
+          </button>
+
+          <!-- User menu -->
+          <div class="user-menu group" id="user-box" onclick="updateMenuState()">
+            <p class="user-menu-name" id="user-name">username</p>
+            <img class="icon-avatar" id="user-avatar" src="assets/img/player1.jpg" alt="user avatar icon">
+
+            <!-- User menu overlay - Replace the existing user-menu-overlay section in your HTML -->
+            <div class="user-menu-overlay hidden" id="user-details">
+              <ul class="user-menu-list">
+                <li class="user-menu-item group" onclick="show_account_page()">
+                  <i class="fa-solid fa-user icon-menu-size"></i>
+                  <p class="user-menu-label" data-i18n="account">Account</p>
+                </li>
+                
+                <li class="user-menu-item group" onclick="show_friends_page()">
+                  <i class="fa-solid fa-users icon-menu-size"></i>
+                  <p class="user-menu-label" data-i18n="friends">Friends</p>
+                </li>
+
+                <li class="user-menu-item group">
+                  <i class="fa-solid fa-chart-bar icon-menu-size"></i>
+                  <p class="user-menu-label" onclick="showMatchHistory()" data-i18n="matchHistory">Match history</p>
+                </li>
+
+                <li class="user-menu-item group" onclick="log_out()">
+                  <i class="fa-solid fa-right-from-bracket icon-menu-size text-red-700"></i>
+                  <p class="user-menu-label group-hover:text-red-700" data-i18n="logOut">Log out</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authentication container -->
+    <div id="authentification-container" class="flex flex-col items-center justify-center w-full">
+      <div class="auth-title-container" style="display: none;">
+        <h1 class="auth-title font-zendots">42 PONG</h1>
+      </div>
+
+      <div class="auth-forms-container">
+        <!-- login window -->
+        <div class="app" id="login"></div>
+        <!-- login 2 factor authentification window-->
+        <div class="app" id="login-2fa" style="display:none"></div>
+        <!-- sign in window -->
+        <div class="app" id="sign-in" style="display: none;"></div>
+        <!-- login fail window -->
+        <div class="app" id="login-fail" style="display: none;"></div>
+      </div>
+    </div>
+
+    <!-- main game play window -->
+    <div class="app" id="game">
+      <div class="content">
+        <!-- <div class= "left relative"> -->
+          <div id="left-friends" class="left-menu" style="display: none;">
+            <!-- User Card Section -->
+            <div class="left-settings relative">
+              <div class="header-container">
+                <i class="fa-solid fa-id-card mr-2 text-sm"></i>
+                <h2 data-i18n="userCard" class="uppercase">USER CARD</h2>
+              </div>
+              
+              <!-- User Profile Card -->
+              <div id="user-profile-card" class="user-profile-card">
+                <div id="rank-badge" class="rank-decoration"> </div>
+                <!-- Avatar Section -->
+                <div class="flex flex-col items-center mb-4">
+                  <div class="relative mb-3">
+                    <img id="profile-card-avatar" 
+                        src="assets/img/default.png" 
+                        alt="User Avatar" 
+                        class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover transition-all duration-300 ease-in-out border-solid border-4 border-white/60 
+                            hover:scale-105 hover:border-white/50 hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)]">     
+                  </div>
+                  <h3 id="profile-card-alias" class="text-black font-bold text-2xl md:text-2xl text-xl text-center">Username</h3>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-3">
+                  <div class="profile-stats-item">
+                      <div class="flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-trophy text-yellow-400 text-2xl md:text-2xl text-xl trophy-glow"></i>
+                      </div>
+                      <div id="profile-card-score" class="text-black font-bold text-xl md:text-xl text-lg">0</div>
+                      <div class="text-black/70 text-base md:text-base text-sm uppercase" data-i18n="score">SCORE</div>
+                  </div>
+                  <div class="profile-stats-item">
+                      <div class="flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-ranking-star text-blue-400 text-2xl md:text-2xl text-xl star-twinkle"></i>
+                      </div>
+                      <div id="profile-card-rank" class="text-black font-bold text-xl md:text-xl text-lg">#-</div>
+                      <div class="text-black/70 text-base md:text-base text-sm uppercase" data-i18n="rank">RANK</div>
+                  </div>
+                  <div class="profile-stats-item">
+                      <div class="flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-chart-line text-green-400 text-2xl md:text-2xl text-xl chart-pulse"></i>
+                      </div>
+                      <div id="profile-card-rate" class="text-black font-bold text-xl md:text-xl text-lg">-%</div>
+                      <div class="text-black/70 text-base md:text-base text-sm uppercase" data-i18n="rate">RATE</div>
+                  </div>
+
+                  <div class="profile-stats-item">
+                      <div class="flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-table-tennis-paddle-ball text-orange-400 text-2xl md:text-2xl text-xl trophy-glow"></i>
+                      </div>
+                      <div id="profile-card-matches" class="text-black font-bold text-xl md:text-xl text-lg">0</div>
+                      <div class="text-black/70 text-base md:text-base text-sm uppercase" data-i18n="matches">MATCHES</div>
+                  </div>
+                  
+                  <div class="profile-stats-item">
+                      <div class="flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-face-smile-wink text-green-400 text-2xl md:text-2xl text-xl star-twinkle"></i>
+                      </div>
+                      <div id="profile-card-wins" class="text-black font-bold text-xl md:text-xl text-lg">#-</div>
+                      <div class="text-black/70 text-base md:text-base text-sm uppercase" data-i18n="wins">WINS</div>
+                  </div>
+                  
+                  <div class="profile-stats-item">
+                      <div class="flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-face-sad-cry text-red-400 text-2xl md:text-2xl text-xl chart-pulse"></i>
+                      </div>
+                      <div id="profile-card-losses" class="text-black font-bold text-xl md:text-xl text-lg">-%</div>
+                      <div class="text-black/70 text-base md:text-base text-sm uppercase" data-i18n="losses">LOSSES</div>
+                  </div>
+                </div>
+
+                <!-- User Performance Chart -->
+                <div class="w-[50%] h-[50%] mx-auto mt-4">
+                  <canvas id="user-Chart"></canvas>
+                </div>
+
+                <script src="/script/charts.js"></script>
+              </div>
+            </div>
+
+            <!-- Friends List Section -->
+            <div class="left-settings flex-1 relative">
+              <div class="header-container">
+                <i class="fa-solid fa-users mr-2 text-sm"></i>
+                <h2 data-i18n="friends">Friends</h2>
+              </div>
+              <div id="mini-friends-list" class="flex flex-col text-white rounded w-[92%] mx-auto">
+                <!-- Friends will be rendered here -->
+                <div id="mini-friends-container" class="space-y-2 overflow-y-auto scrollbar-custom"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-menu" id="left-menu-tournament" style="display: none;">
+            <div class= "left-tournament h-full" id="left-tournament" >
+              <div class="header-container">
+                <i class="fa-solid fa-trophy mr-2 text-sm"></i>
+                <h2 data-i18n="tournament">Tournament</h2>
+              </div>
+              <!-- <p class="mb-4" data-i18n="tournament">Tournament</p> -->
+              <div id="live-tournament-view" class="w-[92%] mx-auto"></div>
+            </div>
+          </div>
+        
+          <!-- Match History -->
+          <div id="match-history-container" class="flex flex-col w-full overflow-x-auto text-center" style="display: none;">
+            <div id="match-history"></div>
+            <div class="flex flex-row justify-center mt-4">
+              <button class="button5" type="button" onclick="scene_to_main_page()" data-i18n="returnBtn">Return</button>
+            </div>
+          </div>
+
+          <!-- user details window -->
+          <div class="preMiddle gap-4" id="middlePrepare" style="display: none;">
+            <div class="header-title">
+              <i class="fa-solid fa-gamepad mr-2 text-sm"></i>
+              <h2 data-i18n="chooseMode">Game mode</h2>
+            </div>
+            <div class="mode-container" id="mode-container"> </div>
+          </div>
+
+
+          <!-- 2 Players -->
+          <div class="justify-center" id="middleSetAlias">
+            <form id="aliasForm">
+              <p data-i18n="setAlias">Set player alias</p><br>
+              <div class="text-center gap-4 flex flex-col">
+                <input type="text" id="player1AliasInput" name="player1alias" class="player-user input-alias" placeholder=user data-i18n-placeholder="player1" readonly disabled />
+                <input type="text" id="player2AliasInput" name="player2alias" class="player-2-alias input-alias" placeholder="Player2" data-i18n-placeholder="player2" required  />
+              </div>
+              <div class="flex flex-row m-4 justify-center gap-4">
+                <button class="button5" type="button" onclick="hideAliasPopup()" data-i18n="returnBtn">Return</button>
+                <button class="group button-next nextBtn" type="submit"  onclick="hideAliasPopup()">Next</button>
+              </div>
+            </form>
+          </div>
+        
+          <!-- Choose scene -->
+          <div class="preMiddle" id="middleSelScene">
+            <div class="header-title">
+              <i class="fa-solid fa-mountain mr-2"></i>
+              <h2 data-i18n="chooseScene">Choose your scene</h2>
+            </div>
+
+            <div class="mode-container" id="scene-container"></div>
+
+            <div class="button2" onclick="scene_to_main_page()">
+              <p data-i18n="returnBtn">Return</p>
+            </div>
+          </div>
+        
+          <!-- vs Online player -->
+          <div class="justify-center" id="vsOnlineView">
+            <div>
+              <form class="invite-form" onsubmit="invite_remote(event)">
+                <p data-i18n="invitePlayer" >Invite player by username</p>
+                <input type="text" name="invited_user" id="invited_user" placeholder="Enter username..." data-i18n-placeholder="enterUsername" required>
+                <div class="flex flex-row m-4 justify-center gap-4">
+                  <button class="button5" type="button" onclick="hideOnlineLobbyPopup()" data-i18n="returnBtn">Return</button>
+                  <button type="submit" class="button5" data-i18n="sendInvitation" onclick="hideOnlineLobbyPopup()">Send Invitation</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        <!-- Tournament Container -->
+          <!-- Choose the number of players -->
+          <div class="justify-center" id="tournament-popup" style="display: none;">
+            <div class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-lg flex flex-col items-center">
+              <p data-i18n="nbrPlayer">Number of players: </p>
+              <input id="player-count-input" type="number" min="2" max="16" step="2"
+                    class="p-4 text-lg w-64 border rounded-full text-center my-4"
+                    placeholder="Only 4, 8, 16" data-i18n-placeholder="tournamentNumber"/>
+              <button id="confirm-player-count" class="button2 mb-4" data-i18n="validBtn">Valid</button>
+              
+              <!-- Enter alias of players -->
+              <form id="player-alias-inputs" class="flex flex-col gap-2 w-full max-w-md my-4 hidden"></form>
+
+              <div class="flex flex-row m-4 justify-center gap-4">
+                <button type="button" class="button5" onclick="hideTournamentPopup()" data-i18n="returnBtn">Return</button>
+                <button id="start-tournament-btn" class="button5 hidden" data-i18n="startTournament" onclick="hideTournamentPopup()">Start tournament</button>
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
+
+          <!-- Tournament View -->
+          <div class="preMiddle" id="tournamentView" style="display: none;">
+            <div class="header-title">
+              <i class="fa-solid fa-trophy mr-2 text-lg"></i>
+              <h2 data-i18n="tournament">Tournament</h2>
+            </div>
+        
+            <div id="tournament-rounds"></div>
+            <div id="tournament-structure"></div>
+
+            <div class="flex flex-row justify-between items-center mt-4 gap-4">
+              <button class="button5" type="button" onclick="scene_to_main_page()" data-i18n="returnBtn">Return</button>
+              <button id="button-tournament" class="group button-next nextBtn hidden" type="submit" onclick="tournament_launch()">Next</button>
+              
+              <!-- Tournament next round button (initially hidden) -->
+              <button id="next-round-button" class="group button-next nextBtn hidden" type="button" data-i18n="nextRound">Next Round</button>
+            </div>
+          </div>
+
+
+        <!-- middle game started -->
+        <div class="middle" id="middleGameStart" style="display: none;">
+          <div class="middle-top-element-top mx-auto mb-4">
+            <div class = "middle-top-element-top-elementSide mr-[0.5%] rounded-tl-[50px] rounded-bl-[50px]">
+              <img class="playerImg border-pink-400 shadow-[0_0_10px_2px_rgba(239,68,68,0.7)]" id="player1Avatar" src="api/avatar/player1" alt="player1">
+              <p id="player1Name" class="truncate w-full">Player 1</p>
+            </div>
+
+            <div class = "middle-top-element-top-element">
+              <div class = "middle-top-element-top-element-top">
+                <p id="result" class="uppercase" data-i18n="start" >Start</p>
+              </div>
+            
+              <div class = "middle-top-element-top-element-bottom">
+                <p class="scoreClass" id="score">0:0</p>
+              </div>
+            </div>
+            
+            <div class = "middle-top-element-top-elementSide ml-[0.5%] rounded-tr-[50px] rounded-br-[50px]">
+              <p id="player2Name" class="truncate w-full">Player 2</p>
+              <img class="playerImg border-sky-400 shadow-[0_0_10px_2px_rgba(59,130,246,0.7)]" id="player2Avatar" src="api/avatar/player2" alt="player2">
+            </div>
+          </div>
+          
+          <div class = "middle-top-element-bottom">
+            <canvas class="render" id="renderCanvas" tabindex="-1"></canvas>
+            <script src="script/gameControl.js"></script>
+            <script src="script/gameAI.js"></script>
+            <script src="script/3d.js"></script>
+            
+            <div id="next-match-banner" class="w-full overflow-hidden mt-6">
+              <div id="next-match-banner-content" class="whitespace-nowrap flex items-center text-black bg-white/50 font-bold text-lg shadow-lg"> </div>
+            </div>
+            
+            <div id="winnerResult" class="gameBanner hidden"></div>
+            <div id="racketLetter" class="gameBanner hidden"></div>
+
+          </div>
+        </div>
+    
+        <!-- Right menu -->
+        <div class="right-menu" id="right-menu" style="display: none;">
+          <!-- Game Play Section button -->
+          <div class="right-settings py-2" id="game-play-section" style="display: none;">
+            <div id="right-game-header" class="header-container">
+              <i class="fa-solid fa-gamepad mr-2 text-sm"></i>
+              <h2 data-i18n="gamePlay">Game play</h2>
+            </div>
+
+            <div id="right-game-content" class="w-[92%] mx-auto flex flex-col items-center gap-3 mt-2 mb-8">
+              <button class="button4" onclick="start_game()" data-i18n="start">Start</button>
+              <button class="button4" onclick="confirm_to_main_page()" data-i18n="mainPage">Main page</button>
+            </div>
+          </div>
+
+          <!-- Match History Section -->
+          <div class="right-settings flex-1 gap-2 relative" id="match-history-section">
+            <div class="right-leaderboard-wrapper">
+              <div id="right-match-history-header" class="header-container">
+                <i class="fa-solid fa-clock-rotate-left mr-2 text-sm"></i>
+                <h2 data-i18n="matchHistoryLast">Match history (10 last)</h2>
+              </div>
+              <div id="right-match-history" class="w-[92%] mx-auto mb-2 overflow-y-auto"></div>
+            </div>
+
+            <!-- Match Popup -->
+            <div id="match-popup" class="absolute right-full top-1/2 -translate-y-1/2 hidden p-4 z-10">
+              <div id="popup-content" class="text-sm space-y-2"></div>
+            </div>
+          </div>
+
+          <!-- Top Ranking -->
+          <div class="right-settings flex-[3] gap-2 relative">
+            <div class="right-leaderboard-wrapper h-full">
+              <div id="right-leaderboard-header" class="header-container">
+                <i class="fa-solid fa-ranking-star mr-2 text-sm"></i>
+                <h2 data-i18n="classement"> Top ranking</h2>
+              </div>
+              <div id="right-leaderboard" class="w-[92%] mx-auto overflow-y-auto flex-1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom alert box -->
+    <div id="customAlert" class="alert-box" style="display:none;">
+      <div class="alert-content">
+        <p id="alertMessage"></p>
+        <div id="alertButtons"></div>
+      </div>
+    </div>
+
+    <!-- SPA container -->
+    <!-- <div id="app"></div> -->
+    <script>
+      console.log('📢 Main page scripts are loaded');
+      window.addEventListener('DOMContentLoaded', () => {
+        console.log('📢 DOM is ready');
+        if (typeof userMenuManager !== 'undefined') {
+          userMenuManager.loadMiniFriendsList();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npx tailwindcss -i ./files/pages/main.css -o ./files/pages/main.final.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.24",
+    "autoprefixer": "^10.4.16"
+  }
+}

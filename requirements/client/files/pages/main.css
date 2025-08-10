@@ -1,0 +1,55 @@
+@import "./css/fonts.css";
+@import "./css/style.css";
+@import "./css/tournament.css";
+@import "./css/onlinePlayer.css";
+@import "./css/buttons.css";
+@import "./css/container.css";
+@import "./css/auth.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply m-0 p-0 h-full;
+    font-family:  'SourGummy-Regular','Righteous-Regular', 'PressStart2P-Regular', 'Urbanist-VariableFont_wght', 'Urbanist-SemiBoldItalic', 'SulphurPoint-Bold', 'Arial Narrow', Arial, sans-serif;
+    background-color:  #dedede;
+    background-image: linear-gradient(45deg, rgba(235, 204, 232, 0.968), rgba(206, 230, 241, 0.756));
+  }
+}
+
+/* Colors custom in utilities */
+@layer utilities {
+    /* Background colors */
+    .bg-bg_color { background-color: #dedede; }
+    .bg-white_color { background-color: rgba(255, 255, 255, 0.88); }
+    .bg-head_color { background-color: #a1b5b848; }
+    .bg-score_color { background-color: #ececec; }
+    .bg-menu_color { background-color: #e6e6e6; }  
+    .bg-window_color { background-color: #e7e7e7; }
+    .bg-gradient_color_1 { background-color: rgba(235, 204, 232, 0.968); }
+    .bg-gradient_color_2 { background-color: rgba(206, 230, 241, 0.756); }
+    .bg-button_color { background-color: rgba(203, 203, 203, 0.968); }
+    .bg-button_color2 { background-color: rgb(241, 243, 244); }
+
+    .bg-icon-color { color: rgba(7, 0, 150, 0.88); }
+
+    /* Text colors */
+    .head_color { color: #a1b5b848; }
+    .text-headtxt_color { color: #ffffff; }
+    .text-text_color { color: #000000; }
+
+    /* Shadow */
+    .shadow-custom { box-shadow: 0 3px 6px rgba(133, 138, 135, 0.568); }
+
+    /* Fonts */
+    .font-sourgummy { font-family: 'SourGummy-Regular', 'Righteous-Regular', sans-serif; }
+}
+
+.font-en h1, .font-en h2 { font-family: 'Righteous-Regular', sans-serif; }
+.font-en p, .f.font-en span, ont-en button { font-family: 'SourGummy-Regular', sans-serif; }
+.font-fr h1, .font-fr h2 { font-family: 'Righteous-Regular', serif;}
+.font-fr p, .font-fr span, .font-fr button, .font-zh #user-name { font-family: 'SourGummy-Regular', serif; }
+.font-zh h2 { font-family: 'shiweiyongchunheicuti-Regular', sans-serif; }
+.font-zh p, .font-zh span, .font-zh button { font-family: 'hanchanbanyuanti-Regular', sans-serif; }

@@ -1,0 +1,630 @@
+/* General style */
+.title {
+    @apply
+        text-2xl
+        flex flex-row items-center justify-between
+        shadow-custom
+        h-[2.2em] 
+        min-w-[1275px] 
+        py-[1%] px-[0.5%]
+        opacity-100
+        bg-white/40
+        mx-6 mb-6
+        mt-[0.6em]
+        rounded-[30px];
+}
+
+#titleText {
+    @apply
+        cursor-pointer
+        m-[1%]
+        backdrop-blur-[10px];
+}
+
+h1 {
+    @apply
+        text-headtxt_color text-left
+        m-0
+        text-[clamp(1.5rem,6vw,2rem)]
+        font-[Righteous-Regular,sans-serif]
+        h-[5]
+        leading-[1];
+}
+
+canvas {
+    @apply
+        outline-none
+        select-none;
+}
+
+canvas.render {
+    @apply
+        m-auto
+        w-full h-full
+        shadow-custom
+        flex-1 block
+        rounded-[10px];
+}
+
+p {
+    @apply
+        text-center
+        m-0
+        font-sourgummy
+        text-[clamp(1rem,5vw,1.5rem)]
+        text-text_color;
+}
+
+span {
+    @apply
+        text-center
+        m-0
+        font-sourgummy
+        text-[clamp(1rem,5vw,1.5rem)]
+        text-text_color;        
+}
+
+.app {
+    @apply
+        flex flex-col items-center justify-center
+        h-[90%];
+}
+
+
+/* Middle element */
+.content {
+    @apply
+        flex flex-row
+        justify-start
+        h-full w-full;
+}
+
+.preMiddle {
+    @apply
+        flex flex-col justify-start items-center
+        gap-4
+        w-[80%] min-w-[50rem] h-[94%];
+}
+
+.middle {
+    @apply
+        flex flex-col
+        w-[80%] min-w-[50rem] h-full;
+}
+
+.middle-top-element-top {
+    @apply
+        h-[6%]  min-h-[50px] max-h-[70px]
+        w-[70%]
+        flex flex-row justify-between
+        bg-white/40
+        rounded-full
+        shadow-custom;
+}
+
+.middle-top-element-top-element {
+    @apply
+        mx-[0.5%]
+        rounded-[10px]
+        flex flex-col items-center justify-center;
+}
+
+.middle-top-element-top-elementSide {
+    @apply
+        my-[0.1%] 
+        rounded-[10px]
+        flex flex-row justify-center items-center;
+}
+
+
+.middle-top-element-top-element-top {
+    @apply
+        m-[0.1%] mx-[0.5%] 
+        rounded-[10px]
+        flex items-center justify-center
+        h-[30%];
+}
+
+
+.middle-top-element-top-element-bottom {
+    @apply
+        m-[0.1%] mx-[0.5%] 
+        rounded-[30px]
+        flex items-center justify-center
+        h-[70%];
+}
+
+.middle-top-element-bottom{
+    @apply
+        /*m-[0.2%]  */
+        relative
+        pb-[1%] pt-[1%] 
+        mb-6  h-[88%]
+        pointer-events-none;
+}
+
+/* Game */
+.playerImg {
+    @apply
+        rounded-full object-cover
+        aspect-square
+        border-4 border-solid border-white
+        w-[clamp(30px,8vw,50px)] h-[clamp(30px,8vw,50px)]
+        mx-[10px];
+}
+
+.scoreClass {
+    @apply
+        text-4xl text-text_color;
+}
+
+#settingPage {
+    @apply
+        fixed top-[20%] left-[35%]
+        h-[40%] w-[30%]
+        bg-white_color
+        z-50
+        flex justify-start items-center
+        text-white
+        rounded-[10px]
+        shadow-custom;
+}
+
+.setting {
+    @apply
+        flex flex-col justify-start items-center;
+}
+
+.user-menu-name{
+    @apply 
+        text-xl
+        hover:text-blue-600 transition-colors duration-500
+        cursor-pointer;
+}
+
+.inputInfo {
+    @apply
+        w-full 
+        max-h-[2vw] min-h-[1vw]
+        aspect-[10/1]
+        flex flex-col justify-center items-center
+        border-[1px] rounded-full
+}
+
+.avatar-container {
+    @apply 
+        flex justify-center items-center;
+}
+
+#match-history{
+    @apply 
+        text-center gap-10;
+}
+
+.match-table-wrapper {
+    @apply 
+        w-full 
+        bg-white/20
+        flex flex-col items-center
+        p-[20px] rounded-[20px];
+}
+
+/* User menu display */
+.user-menu {
+    @apply 
+        m-1
+        flex items-center justify-center
+        cursor-pointer
+        gap-2;
+}
+
+.user-menu-overlay {
+    @apply
+        absolute top-[2.2em] right-[0.5em]
+        bg-white/80
+        rounded-xl shadow-lg 
+        p-2
+        hidden border border-gray-300
+        z-[9999];
+}
+
+.nav-button-wrapper {
+    @apply 
+        flex justify-center items-center;
+}
+
+.nav-elements-container {
+    @apply 
+        flex justify-center items-center gap-4;
+}
+
+.lang-selector-wrapper {
+    @apply 
+        flex justify-center items-center;
+}
+
+.user-menu-item {
+    @apply
+        flex items-center gap-2
+        p-2 text-gray-900
+        rounded-lg dark:text-white 
+        hover:bg-gradient_color_2
+        text-text_color
+        w-full
+        transition-colors duration-500
+        cursor-pointer;
+}
+
+.user-menu-label {
+    @apply 
+        ml-3 
+        leading-none
+        group-hover:bg-icon-color
+        transition-colors duration-500;
+}
+
+.icon-menu-size {
+    @apply 
+        w-6 h-6
+        bg-icon-color;
+}
+
+.icon-avatar {
+    @apply 
+        w-11 h-11 rounded-full
+        object-cover
+        border border-solid border-gray-300;
+}
+
+.player-user {
+    @apply
+        bg-gray-800  text-gray-300 
+        cursor-not-allowed 
+        pointer-events-none;
+}
+
+
+/* new */
+/* Tailwind CSS Utilities with @apply */
+
+.page-container {
+  @apply max-w-[800px] mx-auto p-5 text-white;
+}
+
+.page-title {
+  @apply text-4xl text-center mb-8 text-white;
+}
+
+/* Account Page */
+.account-info {
+  @apply flex flex-col gap-8;
+}
+
+.profile-section {
+  @apply flex items-center gap-5 p-5 bg-white/10 rounded-[10px];
+}
+
+.profile-avatar {
+  @apply w-20 h-20 rounded-full object-cover;
+}
+
+.profile-details h2 {
+  @apply m-0 mb-1 text-2xl;
+}
+
+.profile-details p {
+  @apply m-0 text-gray-300;
+}
+
+.form-section {
+  @apply bg-white/10 p-5 rounded-[10px];
+}
+
+.form-section label {
+  @apply block my-3 font-bold;
+}
+
+.form-section input {
+  @apply w-full mb-4;
+}
+
+/* Friends Page */
+.friends-section {
+  @apply flex flex-col gap-5;
+}
+
+.add-friend {
+  @apply flex gap-2 mb-5;
+}
+
+.add-friend input {
+  @apply flex-1;
+}
+
+.friends-list {
+  @apply bg-white/10 py-5 rounded-[10px];
+}
+
+.friends-list h3 {
+  @apply mt-0 mb-4 text-white;
+}
+
+.friend-item {
+  @apply flex items-center gap-4 p-2 mb-2 bg-white/5 rounded-lg;
+}
+
+.friend-avatar {
+  @apply w-10 h-10 rounded-full object-cover;
+}
+
+.friend-name {
+  @apply flex-1 font-bold;
+}
+
+.friend-status {
+  @apply px-2 py-1 rounded-full text-sm;
+}
+
+.friend-status.online {
+  @apply bg-green-500 text-white;
+}
+
+.friend-status.offline {
+  @apply bg-gray-600 text-white;
+}
+
+.button-small {
+  @apply px-2 py-1 text-sm rounded bg-blue-500 text-white cursor-pointer;
+}
+
+.button-small:disabled {
+  @apply bg-gray-600 cursor-not-allowed;
+}
+
+.button-small:hover:not(:disabled) {
+  @apply bg-blue-600;
+}
+
+
+.control-mapping {
+  @apply flex gap-5;
+}
+
+.control-mapping span {
+  @apply bg-white/10 px-2 py-1 rounded font-mono;
+}
+
+/* Button Groups */
+.button-group {
+  @apply flex gap-2 justify-center flex-wrap mt-8;
+}
+
+.button-group .button2 {
+  @apply m-0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-container {
+    @apply p-2;
+  }
+
+  .profile-section {
+    @apply flex-col text-center;
+  }
+
+  .add-friend {
+    @apply flex-col;
+  }
+
+  .friend-item {
+    @apply flex-wrap gap-2;
+  }
+
+  .setting-item {
+    @apply flex-col items-start gap-2;
+  }
+
+  .control-mapping {
+    @apply flex-col gap-2;
+  }
+
+  .button-group {
+    @apply flex-col items-center;
+  }
+}
+
+/* Alert box */
+.alert-box {
+  @apply
+    fixed top-0 left-0 w-full h-full
+    flex items-center justify-center
+    bg-black/50 z-50 hidden;
+}
+
+.alert-content {
+  @apply
+    bg-white p-6 rounded-lg shadow-lg
+    max-w-md w-[300px] text-center;
+}
+
+.alert-content h2 {
+  @apply 
+    text-2xl mb-4;
+}
+
+.alert-content p {
+  @apply 
+    text-gray-700 mb-6
+    break-normal whitespace-normal truncate;
+}
+
+.alert-content button {
+  @apply
+    px-4 py-2 bg-blue-600 text-white rounded-md m-2
+    hover:bg-blue-700 transition-colors duration-300;
+}
+
+#confirmBtn {
+  @apply
+    px-4 py-2 bg-blue-600 text-white rounded-md
+    hover:bg-blue-700 transition-colors duration-300;
+}
+
+#showAlert {
+  @apply
+    px-4 py-2 bg-blue-600 text-white rounded-md
+    hover:bg-blue-700 transition-colors duration-300;
+}
+
+
+/* Set player alias */
+.input-alias {
+  @apply
+    p-4 text-lg w-64 
+    border border-[1px] rounded-[10px]
+    text-center text-lg;
+}
+
+
+#middleSetAlias {
+  @apply
+    fixed top-0 left-0 w-full h-full
+    flex items-center justify-center
+    bg-black/50 z-50 hidden;
+}
+
+#middleSetAlias > form {
+  @apply
+    bg-white p-6 rounded-[20px] shadow-lg
+    text-center;
+}
+
+#vsOnlineView {
+  @apply
+    fixed top-0 left-0 w-full h-full
+    flex items-center justify-center
+    bg-black/50 z-50 hidden;
+}
+
+#vsOnlineView > div {
+  @apply
+    bg-white p-6 rounded-[20px] shadow-lg
+    text-center;
+}
+
+#tournament-popup {
+  @apply
+    fixed top-0 left-0 w-full h-full
+    flex items-center justify-center
+    bg-black/50 z-50 hidden;
+}
+
+#tournament-popup > div {
+  @apply
+    bg-white p-6 rounded-[20px] shadow-lg
+    text-center;
+}
+
+
+/* User Profile Card Styles */
+#user-profile-card {
+  @apply
+    mx-auto mb-6 
+    w-[85%] 
+    p-6 
+    rounded-[20px] 
+    transition-all duration-300 ease-in-out
+    bg-white/50;
+}
+
+#user-profile-card:hover {
+  @apply 
+    bg-white/60
+    scale-105
+}
+
+
+#profile-card-avatar {
+  @apply
+    transition-all duration-300 ease-in-out
+    border-[3px] border-white/30;
+}
+
+#profile-card-avatar:hover {
+  @apply
+    scale-105
+    border-white/50
+    shadow-[0_8px_20px_rgba(0,0,0,0.2)];
+}
+
+#profile-status-indicator {
+  @apply
+    animate-pulse
+    shadow-[0_0_0_3px_rgba(255,255,255,0.8)];
+}
+
+/* Stats grid items hover effects */
+.profile-stats-item {
+  @apply
+    text-center
+    transition-all duration-200 ease-in-out
+    rounded-2xl
+    bg-white/5
+    border border-white/10;
+}
+
+.profile-stats-item:hover {
+  @apply
+    -translate-y-0.5
+    bg-white/10
+    border-white/20
+    shadow-[0_6px_16px_rgba(0,0,0,0.15)];
+}
+
+/* Icon animations */
+.trophy-glow {
+  @apply 
+    animate-pulse
+    drop-shadow-[0_0_8px_rgba(255,193,7,0.3)];
+}
+
+.star-twinkle {
+  @apply 
+    animate-pulse
+    drop-shadow-[0_0_8px_rgba(59,130,246,0.3)];
+}
+
+.chart-pulse {
+  @apply 
+    animate-pulse
+    drop-shadow-[0_0_8px_rgba(34,197,94,0.3)];
+}
+
+/* Responsive adjustments for profile card - Use these classes directly in HTML */
+@media (max-width: 768px) {
+  #user-profile-card {
+    @apply
+      w-[90%] 
+      p-5 
+      rounded-2xl 
+      mb-5;
+  }
+  
+  #profile-card-avatar {
+    @apply
+      w-16 h-16;
+  }
+}
+
+.gameBanner {
+  @apply
+      fixed p-[2%] 
+      top-1/2 left-1/2 
+      transform -translate-x-1/2 -translate-y-1/2 
+      bg-white/50 rounded-[30px]
+      absolute text-center
+      pointer-events-none
+      text-black text-6xl font-bold
+      z-50;
+}

@@ -1,0 +1,108 @@
+services:
+
+  t_game-1:
+    container_name: t_game-1
+    image: t_game:1.0
+    networks:
+     - transcendence_network
+    build:
+      context: requirements/game
+      dockerfile: Dockerfile
+    env_file: .env
+    restart: unless-stopped
+    expose:
+    - "9999"
+
+  t_game-2:
+    container_name: t_game-2
+    image: t_game:1.0
+    networks:
+     - transcendence_network
+    build:
+      context: requirements/game
+      dockerfile: Dockerfile
+    env_file: .env
+    restart: unless-stopped
+    expose:
+    - "9999"
+
+  t_user:
+    container_name: t_user
+    image: t_user:1.0
+    networks:
+    - transcendence_network
+    build:
+      context: requirements/user
+      dockerfile: Dockerfile
+    env_file: .env
+    restart: unless-stopped
+    expose:
+    - "9223"
+
+  t_record:
+    container_name: t_record
+    image: t_record:1.0
+    networks:
+    - transcendence_network
+    build:
+      context: requirements/record
+      dockerfile: Dockerfile
+    env_file: .env
+    restart: unless-stopped
+    expose:
+    - "9431"
+
+  t_friend:
+    container_name: t_friend
+    image: t_friend:1.0
+    networks:
+    - transcendence_network
+    build:
+      context: requirements/friend
+      dockerfile: Dockerfile
+    env_file: .env
+    restart: unless-stopped
+    expose:
+    - "9766"
+
+  t_client:
+    container_name: t_client
+    image: t_client:1.0
+    networks:
+    - transcendence_network
+    build:
+      context: requirements/client
+      dockerfile: Dockerfile
+      args:
+        GOOGLE_USER_ID: ${GOOGLE_USER_ID}
+    depends_on:
+    - t_game-1
+    - t_game-2
+    - t_broker
+    - t_user
+    - t_record
+    - t_friend
+    env_file: .env
+    restart: unless-stopped
+    ports:
+    - "9000:9000"
+
+  t_broker:
+    container_name: t_broker
+    image: t_broker:1.0
+    networks:
+    - transcendence_network
+    build:
+      context: requirements/broker
+      dockerfile: Dockerfile
+    env_file: .env
+    restart: unless-stopped
+    expose:
+    - "9899"
+    - "9555"
+
+
+networks:
+  transcendence_network:
+    name: "transcendence_network"
+    driver: "bridge"

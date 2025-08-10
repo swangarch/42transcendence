@@ -1,0 +1,455 @@
+.style-container {
+    @apply
+        flex flex-col items-center
+        bg-white/40
+        rounded-[30px]
+        overflow-hidden
+        max-w-4xl
+        mx-auto
+        shadow-sm;
+}
+
+.left {
+    @apply
+        relative
+        w-[20%] min-w-[15rem] h-[95%]
+        mx-6 mb-6 
+        rounded-[30px]
+        flex flex-col items-center justify-start
+        shadow-custom
+        box-border
+        opacity-100
+        bg-white/40
+        backdrop-blur-[10px]
+        hover:opacity-90;
+}
+
+/* Left menu */
+.left-menu {
+    @apply 
+        relative 
+        w-[20%] min-w-[15rem] h-[95%]
+        mx-2 mb-2 gap-4
+        flex flex-col items-center justify-start;
+}
+
+.left-settings {
+    @apply 
+        flex flex-col items-center justify-start
+        w-[90%] 
+        rounded-[30px]
+        shadow-custom bg-white/40 backdrop-blur-[10px]
+        gap-2;
+}
+
+
+.right {
+    @apply
+        relative
+        w-[20%] min-w-[15rem] h-[95%]
+        mx-4 mb-4
+        rounded-[30px]
+        flex flex-col items-center justify-start
+        shadow-custom
+        box-border
+        opacity-100
+        bg-white/40
+        backdrop-blur-[10px]
+        hover:opacity-90;
+}
+
+.right-game {
+    @apply 
+        relative 
+        w-[20%] min-w-[15rem] h-[95%]
+        mx-2 mb-2 gap-4
+        flex flex-col items-center justify-start;
+}
+
+/* Right menu */
+.right-menu {
+    @apply 
+        relative 
+        w-[20%] min-w-[15rem] h-[95%]
+        mx-2 mb-2 gap-4
+        flex flex-col items-center justify-start;
+}
+
+.right-settings {
+    @apply 
+        flex flex-col items-center justify-start
+        w-[90%] 
+        rounded-[30px]
+        shadow-custom bg-white/40 backdrop-blur-[10px]
+}
+
+.right-leaderboard-wrapper {
+    @apply 
+        w-full flex flex-col items-center;
+}
+
+.header-title {
+    @apply
+        px-8 py-3 pt-4
+        m-2 mb-4
+        bg-gradient-to-r from-slate-50/95 to-white/95 
+        rounded-full border border-slate-200/60 
+        flex items-center justify-center 
+        w-[80%]
+}
+
+.header-title h2 {
+    @apply
+        text-xl font-semibold 
+        text-slate-600 
+        uppercase tracking-wider 
+        flex items-center gap-2 whitespace-nowrap
+}
+
+.header-container {
+    @apply
+        px-8 py-3 pt-4
+        m-2 mb-4
+        bg-gradient-to-r from-slate-50/95 to-white/95 
+        rounded-full border border-slate-200/60 
+        z-10 flex items-center justify-center 
+        w-[93%]
+}
+
+.header-container h2 {
+    @apply
+        text-xs font-semibold 
+        text-slate-600 
+        uppercase tracking-wider 
+        flex items-center gap-2 whitespace-nowrap
+}
+
+/* Choose mode container */
+.mode-container {
+    @apply
+        relative
+        w-full h-[80%]
+        grid grid-cols-2 place-items-center
+        mx-auto gap-10 px-10
+        backdrop-blur-[10px]
+        rounded-[10px]
+        box-border;
+}
+
+.mode-item {
+    @apply
+        relative
+        w-full max-w-lg
+        flex flex-col
+        box-border rounded-[50px]
+        opacity-100
+        backdrop-blur-[10px]
+        overflow-hidden
+        shadow-lg
+}
+
+.mode-item:hover {
+    @apply
+        opacity-70
+        scale-105
+        border-2 border-white/20
+        backdrop-blur-[15px]
+        transition-transform
+        duration-300;
+}
+
+.mode-item p {
+    @apply 
+        text-left
+        w-full
+}
+
+.mode-image {
+    @apply 
+        w-full 
+        h-64
+        object-cover 
+        border-0 border-t-[12px] border-x-[12px] border-white
+        rounded-t-[50px];
+}
+
+.detail-mode {
+    @apply
+        text-xs text-gray-500 opacity-0 
+        group-hover:opacity-100 
+        transition-opacity duration-300
+}
+
+
+/* Match popup styles */
+.match-popup-container {
+    @apply
+        bg-gradient-to-br from-slate-800 to-slate-700 
+        border-2 border-slate-600 
+        rounded-2xl 
+        p-4 
+        shadow-2xl 
+        backdrop-blur-md 
+        min-w-[280px];
+}
+
+.match-popup-title {
+    @apply
+        text-lg text-white 
+        font-bold 
+        mb-1;
+}
+
+.match-popup-date {
+    @apply
+        text-slate-400 
+        text-xs text-left;
+}
+
+
+.match-popup-info-row {
+    @apply
+        flex justify-between items-center 
+        py-2 px-3 
+        bg-slate-700/50 
+        rounded-lg 
+        hover:bg-slate-700/70 
+        transition-colors 
+        duration-200;
+}
+
+.match-popup-info-label {
+    @apply
+        text-slate-300 
+        text-sm font-medium 
+        flex items-center gap-2;
+}
+
+.match-popup-info-icon {
+    @apply
+        text-slate-400 text-xs;
+}
+
+.match-popup-info-value {
+    @apply
+        text-white text-sm 
+        font-semibold 
+        ml-4;
+}
+
+.match-popup-result-container {
+    @apply
+        text-center;
+}
+
+.match-popup-result-badge {
+    @apply
+        inline-flex items-center gap-2 
+        px-4 py-3 
+        rounded-xl 
+        border border-slate-600;
+}
+
+.match-popup-result-text {
+    @apply
+        text-xs font-medium 
+        text-slate-400 
+        uppercase 
+        tracking-wider 
+        mb-1;
+}
+
+.match-popup-result-value {
+    @apply
+        font-bold text-lg 
+        uppercase 
+        tracking-wide;
+}
+
+
+/* Result color */
+.match-popup-win-color {
+    @apply text-green-400;
+}
+
+.match-popup-loss-color {
+    @apply text-red-400;
+}
+
+.match-popup-win-bg {
+    @apply bg-green-400/10;
+}
+
+.match-popup-loss-bg {
+    @apply bg-red-400/10;
+}
+
+
+/* LeaderBoard */
+.leaderboard-points {
+    @apply
+        text-sm text-white
+        ml-auto mr-[0.5rem] 
+        px-2 py-1
+}
+
+.leaderboard-points-player {
+    @apply leaderboard-points
+        font-bold
+}
+
+.leaderboard-container {
+    @apply
+        flex items-center 
+        text-gray-800 
+        rounded-xl p-2 mb-1 cursor-pointer border;
+}
+
+.leaderboard-container-1 {
+    @apply leaderboard-container
+        bg-gradient-to-r from-yellow-200 to-yellow-300 
+        hover:from-yellow-300 hover:to-yellow-400 
+        border-yellow-400;
+}
+
+.leaderboard-container-2 {
+    @apply leaderboard-container
+        bg-gradient-to-r from-gray-200 to-gray-300 
+        hover:from-gray-300 hover:to-gray-400 
+        border-gray-400;
+}
+
+.leaderboard-container-3 {
+    @apply leaderboard-container
+        bg-gradient-to-r from-orange-200 to-orange-300 
+        hover:from-orange-300 hover:to-orange-400 
+        border-orange-400;
+}
+
+.leaderboard-container-all {
+    @apply leaderboard-container
+        bg-gradient-to-r from-blue-50 to-blue-100
+        hover:from-blue-100 hover:to-blue-200
+        border-blue-200;
+}
+
+.leaderboard-container-player {
+    @apply leaderboard-container
+        bg-gradient-to-r from-blue-200 to-blue-300 
+        hover:from-blue-300 hover:to-blue-400 
+        border-blue-400
+}
+
+
+/* History match */
+.match-history-result {
+    @apply
+        text-sm text-white
+        ml-auto mr-[0.5rem] 
+        px-2 py-1 rounded 
+}
+
+.match-history-result-win {
+    @apply match-history-result
+        bg-green-500/80
+}
+
+.match-history-result-loss {
+    @apply match-history-result
+        bg-red-500/80
+}
+
+
+/* History match containers */
+.match-history-container {
+    @apply
+        flex items-center 
+        text-gray-800 
+        rounded-xl p-2 mb-1 cursor-pointer border
+        bg-gradient-to-r from-slate-100 to-slate-50 
+        hover:from-slate-50 hover:to-slate-100 
+        border-slate-200;
+}
+
+.match-history-container-win {
+    @apply match-history-container
+        bg-gradient-to-r from-green-100 to-green-50 
+        hover:from-green-50 hover:to-green-100 
+        hover:border-green-200;
+}
+
+.match-history-container-loss {
+    @apply match-history-container
+        bg-gradient-to-r from-red-100 to-red-50 
+        hover:from-red-50 hover:to-red-100 
+        hover:border-red-200;
+}
+
+/* User Profile card */
+.user-profile-card {
+    @apply 
+        relative overflow-hidden
+        mx-auto mb-6 
+        w-[85%] 
+        p-6 
+        rounded-[24px] 
+        transition-all duration-300 ease-in-out
+        hover:scale-[1.02];
+}
+
+.user-profile-card-1 {
+    @apply user-profile-card
+        bg-gradient-to-br from-amber-50 via-yellow-100 to-amber-200;
+}
+
+
+.user-profile-card-2 {
+    @apply user-profile-card
+        bg-gradient-to-br from-slate-100 via-gray-100 to-slate-300;
+}
+
+.user-profile-card-3 {
+    @apply user-profile-card
+        bg-gradient-to-br from-orange-50 via-red-100 to-orange-200;
+}
+
+.user-profile-card-all {
+    @apply
+        bg-gradient-to-br from-white/30 via-white/40 to-white/50;
+}
+
+
+/* Badge Rank for user profile card */
+.rank-decoration {
+    @apply
+        absolute top-[2px] right-[2px]
+        w-[36px] h-[36px]
+        rounded-[10%] rounded-bl-[50%] rounded-tr-[50%]
+        flex items-center justify-center
+        text-xl font-bold
+        hover:scale-[1.02];
+}
+
+.rank-decoration-1 {
+    @apply
+        bg-gradient-to-br from-yellow-200/80 to-amber-400/80
+        text-yellow-900;
+}
+
+.rank-decoration-2 {
+    @apply
+        bg-gradient-to-br from-gray-200/80 to-gray-400/80
+        text-slate-700;
+}
+
+.rank-decoration-3 {
+    @apply
+        bg-gradient-to-br from-amber-700/70 to-amber-900/70
+        text-white;
+}
+
+.rank-decoration-all {
+    @apply
+        bg-gradient-to-br from-blue-300/80 to-blue-500/80
+        text-white;
+}

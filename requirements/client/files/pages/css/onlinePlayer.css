@@ -1,0 +1,90 @@
+/* Online Player List Styles */
+.online-player-wrapper {
+    @apply
+        h-full max-h-60 w-full
+        p-3
+        bg-white/80
+        border-2 border-gray-300 rounded-lg
+        overflow-auto;
+}
+
+.online-player-list {
+    @apply
+        w-full
+        divide-y divide-gray-200 
+        dark:divide-gray-600
+}
+
+.online-player-item {
+    @apply 
+        py-3 sm:py-4;
+}
+
+.online-player-box {
+    @apply 
+        flex items-center 
+        space-x-3 rtl:space-x-reverse;
+}
+
+.online-player-avatar {
+    @apply 
+        shrink-0;
+}
+
+.online-player-name {
+    @apply 
+        text-left
+        text-sm font-semibold 
+        text-black truncate;
+}
+
+/* Player status */
+.online-player-status {
+    @apply 
+        inline-flex items-center 
+        text-xs font-medium 
+        px-2.5 py-0.5 rounded-full;
+}
+
+.status-online {
+    @apply 
+        bg-green-100 text-green-800 
+        dark:bg-green-900 dark:text-green-300;
+}
+
+.status-offline {
+    @apply 
+        bg-red-100 text-red-800 
+        dark:bg-red-900 dark:text-red-300;
+}
+
+.status-dot {
+    @apply 
+        w-2 h-2 me-1 rounded-full;
+}
+
+.dot-online {
+    @apply 
+        bg-green-500;
+}
+
+.dot-offline {
+    @apply 
+        bg-red-500;
+}
+
+/* Invite form */
+.invite-form {
+    @apply
+        flex flex-col items-center
+        gap-4 p-5 rounded-[10px]
+        bg-white/90
+}
+
+.invite-form input[type="text"] {
+    @apply 
+        p-2
+        w-full
+        border border-gray-300
+        rounded-md
+}

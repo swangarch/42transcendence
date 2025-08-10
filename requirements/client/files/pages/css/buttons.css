@@ -1,0 +1,264 @@
+
+/* Button */
+.btn-base {
+    @apply
+        px-[5rem] py-2
+        flex flex-col justify-center items-center
+        border border-solid rounded-[50px]
+        m-[1.5%]
+        shadow-custom
+        bg-button_color
+        backdrop-blur-[10px]
+        truncate
+        hover:bg-gradient_color_2
+        transition-colors duration-500;
+        background-color:rgb(241, 243, 244);
+}
+
+.button1 {
+    @apply btn-base 
+        w-[60%] max-w-[5vw] max-h-[12vw];
+}
+
+.button2 {
+    @apply btn-base 
+        w-[60%] max-w-[5vw] max-h-[12vw];
+}
+
+.button3 {
+    @apply btn-base 
+        w-[60%] max-w-[36vw] min-w-[24vw] min-h-[5vw]
+        text-xl mx-auto;
+}
+
+.button4 {
+    @apply btn-base 
+        w-[60%] max-w-[5vw] max-h-[12vw];
+}
+
+/* Set player alias */
+.button5 {
+    @apply
+        border border-solid  rounded-[50px]
+        text-lg text-center
+        px-6 h-12 
+        shadow-custom
+        items-center justify-center overflow-hidden 
+        hover:bg-gradient_color_2;
+        background-color:rgb(241, 243, 244);
+}
+
+.invite-button {
+    @apply 
+        p-1.5
+        justify-center items-center
+        text-white 
+        rounded-[10px]
+        w-[8em];
+}
+
+.invite-button-enable {
+    @apply invite-button
+        bg-blue-800
+        hover:bg-blue-600;
+}
+
+.invite-button-disable {
+    @apply invite-button
+        bg-gray-800;
+}
+
+.invite-button-sent {
+    @apply invite-button
+        bg-green-800
+        hover:bg-green-600;
+}
+
+.icon-button {
+    @apply 
+        w-12 h-12
+        rounded-full
+        flex justify-center items-center
+        hover:text-blue-600
+        transition-colors duration-500
+        cursor-pointer
+        p-0 m-1
+        relative;
+}
+
+.notification-dot {
+    @apply 
+        absolute 
+        top-1.5 right-1.5 
+        w-4 h-4 
+        bg-red-500 
+        rounded-full
+        text-white text-xs font-bold
+        flex items-center justify-center
+        leading-none 
+        z-10;
+}
+
+/* Button right */
+.button-right {
+    @apply
+        w-[80%] max-w-[5vw] max-h-[12vw]
+        m-[1.5%]
+        flex flex-col justify-center items-center
+        border border-solid  rounded-[50px]
+        shadow-custom
+        hover:bg-gradient_color_2
+        transition-colors duration-500
+        backdrop-blur-[10px]
+        truncate
+        px-[5rem] py-2;
+        background-color:rgb(241, 243, 244);
+}
+
+.button-next {
+    @apply
+        relative 
+        inline-flex h-12 
+        items-center justify-center overflow-hidden 
+        border border-solid rounded-[50px]
+        shadow-custom
+        hover:bg-gradient_color_2
+        px-6 
+        font-medium text-black duration-500
+        truncate;
+        background-color:rgb(241, 243, 244);
+}
+
+.div-next {
+    @apply
+        translate-x-0 opacity-100 duration-200
+        transition duration-200 ease-in-out 
+        group-hover:-translate-x-[150%] 
+        group-hover:opacity-0;
+} 
+
+.div-next-icon {
+    @apply
+        absolute translate-x-[150%] opacity-0 
+        transition duration-200 ease-in-out  
+        group-hover:translate-x-0 
+        group-hover:opacity-100;
+}
+
+
+/* Simple Modern Buttons with Tailwind */
+.modern-btn {
+    @apply
+        inline-flex items-center justify-center gap-2
+        px-6 py-3
+        rounded-xl
+        font-medium text-base 
+        text-white
+        cursor-pointer
+        min-h-[44px]
+        transition-all duration-200
+        whitespace-nowrap;
+}
+
+.modern-btn span{
+    @apply
+        text-white text-lg
+        whitespace-nowrap;
+}
+
+.modern-btn-primary {
+    @apply modern-btn
+        bg-blue-500
+        hover:bg-blue-600
+        hover:-translate-y-1;
+}
+
+.modern-btn-success {
+    @apply modern-btn
+        bg-emerald-500
+        hover:bg-emerald-600
+        hover:-translate-y-1;
+}
+
+.modern-btn-danger {
+    @apply modern-btn
+        bg-red-500
+        hover:bg-red-600
+        hover:-translate-y-1;
+}
+
+.modern-btn-secondary {
+    @apply modern-btn
+        bg-gray-500
+        hover:bg-gray-600
+        hover:-translate-y-1;
+}
+
+/* Simple Icon Buttons */
+.modern-icon-btn {
+    @apply
+        inline-flex items-center justify-center
+        w-9 h-9
+        rounded-full
+        text-white
+        cursor-pointer
+        transition-all duration-200
+        aspect-square;
+}
+
+.modern-icon-success {
+    @apply modern-icon-btn
+        bg-emerald-500
+        hover:bg-emerald-600
+        hover:scale-105;
+}
+
+.modern-icon-danger {
+    @apply modern-icon-btn
+        bg-red-500
+        hover:bg-red-600
+        hover:scale-105;
+}
+
+/* Custom styles for toggle 2FA Tailwind */
+#twofa-toggle-input {
+    @apply 
+        sr-only;
+}
+
+#twofa-toggle-input:disabled + div {
+    @apply 
+        opacity-60 cursor-not-allowed;
+}
+
+#twofa-toggle-input:disabled + div:hover {
+    @apply 
+        transform-none;
+}
+
+#twofa-toggle-input + div {
+    @apply 
+        transition-all duration-300 ease-in-out
+        relative w-14 h-7 bg-red-500 
+        rounded-full cursor-pointer;
+}
+
+#twofa-toggle-input + div::after {
+    @apply 
+        transition-all duration-300
+        absolute top-0.5 left-0.5
+        bg-white border-gray-300 border
+        rounded-full h-6 w-6;
+        content: '';
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#twofa-toggle-input:checked + div {
+    @apply 
+        bg-green-500;
+}
+
+#twofa-toggle-input:checked + div::after {
+    @apply 
+        translate-x-full border-white;
+}

@@ -1,0 +1,154 @@
+/* body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+} */
+
+@font-face {
+    font-family: 'Urbanist-SemiBoldItalic'; 
+    src: url('../fonts/Urbanist-SemiBoldItalic.ttf') format('truetype'); 
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Urbanist-VariableFont_wght';
+    src: url('../fonts/Urbanist-VariableFont_wght.ttf') format('truetype'); 
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PressStart2P-Regular'; 
+    src: url('../fonts/PressStart2P-Regular.ttf') format('truetype'); 
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SulphurPoint-Bold';
+    src: url('../fonts/SulphurPoint-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Righteous-Regular';
+    src: url('../fonts/Righteous-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourGummy-Regular';
+    src: url('../fonts/SourGummy-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'shiweiyongchunheicuti-Regular';
+    src: url('../fonts/shiweiyongchunheicuti.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'hanchanbanyuanti-Regular';
+    src: url('../fonts/hanchanbanyuanti.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Audiowide-Regular';
+    src: url('../fonts/Audiowide-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gugi-Regular';
+    src: url('../fonts/Gugi-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'StalinistOne-Regular';
+    src: url('../fonts/StalinistOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Wallpoet-Regular';
+    src: url('../fonts/Wallpoet-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ZenDots-Regular';
+    src: url('../fonts/ZenDots-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes fadeIn
+{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Classes pour utiliser les polices personnalisées */
+.font-audiowide {
+    font-family: 'Audiowide-Regular', sans-serif !important;
+}
+
+.font-gugi {
+    font-family: 'Gugi-Regular', sans-serif !important;
+}
+
+.font-pressstart {
+    font-family: 'PressStart2P-Regular', sans-serif !important;
+}
+
+.font-righteous {
+    font-family: 'Righteous-Regular', sans-serif !important;
+}
+
+.font-sourgummy {
+    font-family: 'SourGummy-Regular', sans-serif !important;
+}
+
+.font-stalinist {
+    font-family: 'StalinistOne-Regular', sans-serif !important;
+}
+
+.font-sulphur {
+    font-family: 'SulphurPoint-Bold', sans-serif !important;
+}
+
+.font-urbanist {
+    font-family: 'Urbanist-Regular', sans-serif !important;
+}
+
+.font-wallpoet {
+    font-family: 'Wallpoet-Regular', sans-serif !important;
+}
+
+.font-zendots {
+    font-family: 'ZenDots-Regular', sans-serif !important;
+}
+
+.font-shiweiyongchunheicuti {
+    font-family: 'shiweiyongchunheicuti-Regular', sans-serif !important;
+}
+
+.font-hanchanbanyuanti {
+    font-family: 'hanchanbanyuanti-Regular', sans-serif !important;
+}
