@@ -10,6 +10,9 @@ Add/remove friend, friend status, game dashboard
 Handle unexpected disconnections.
 
 ## 🧰 Tech Stack
+### Architecture
+![System Architecture](doc/ft_transcendence.jpg)
+
 ### Frontend
 HTMl + Tailwind CSS + Typescript
 Babylon.js – Browser-based 3D game rendering
