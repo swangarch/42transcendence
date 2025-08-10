@@ -2,6 +2,8 @@
 A fullstack Pong-style online multiplayer web game, created by a team of 5.
 built with a microservice architecture, WebSocket real-time communication, and secure authentication, featuring 3D rendering with Babylon.js.
 
+[🎥 Watch on YouTube](https://www.youtube.com/watch?v=GUWTqCiNAI0)
+
 ## 🕹️Features:
 Account management, enable/disable 2FA, JWT session management, Google sign in, upload avatar, prevent SQL injection / XSS attack
 ### Login page
