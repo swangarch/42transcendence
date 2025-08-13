@@ -1,5 +1,4 @@
 const google_userId = process.env.GOOGLE_USER_ID;
-
 if (!process.env.JWT_SECRET || process.env.JWT_SECRET === "")
 {
     console.log("info [game]: Error, no token is provide.");
@@ -154,7 +153,7 @@ fastify.get('/api/2fa/setup/:id', async (req, res) => {
 
   } catch (e) {
     console.log(e);
-    res.code(500).send({ success: false, info: 'Failed to setup 2FA' });
+    res.code(400).send({ success: false, info: 'Failed to setup 2FA' });
   }
 });
 
@@ -231,7 +230,7 @@ fastify.post('/api/2fa/verify', async (req, res) => {
 
   } catch (e) {
     console.log(e);
-    res.code(500).send({ success: false, info: 'Server error' });
+    res.code(400).send({ success: false, info: 'Failed to verify 2FA' });
   }
 });
 
@@ -422,9 +421,9 @@ fastify.get('/api/users/:id', async (req, res) =>{
   }
   catch(e)
   {
-    const dataStr = {"info": "Error: server error.", success: false};
+    const dataStr = {"info": "Error: Failed to get user data.", success: false};
     const dataBack = JSON.stringify(dataStr);
-    res.code(500).send(dataBack);
+    res.code(400).send(dataBack);
     console.log(e);
     return;
   }
@@ -909,7 +908,7 @@ fastify.get('/api/avatar/:id', (req, res) => {
         {
           if (err.code != 'ENOENT')
           {
-            res.code(500).send({"info": "Server error while reading avatar."});
+            res.code(400).send({"info": "Error while reading avatar."});
             console.log("info [user]: Error: user", userId.alias, "avatar is opened with error.");
             return;
           }
@@ -940,7 +939,7 @@ fastify.get('/api/avatar/:id', (req, res) => {
         {
           if (err.code != 'ENOENT')
           {
-            res.code(500).send({"info": "Server error while reading avatar."});
+            res.code(400).send({"info": "Error while reading avatar."});
             console.log("info [user]: Error: user", userId.alias, "avatar is opened with error.");
             return;
           }
@@ -971,7 +970,7 @@ fastify.get('/api/avatar/:id', (req, res) => {
       {
         if (err.code != 'ENOENT')
         {
-          res.code(500).send({"info": "Server error while reading avatar."});
+          res.code(400).send({"info": "Error while reading avatar."});
           console.log("info [user]: Error: user with alias", userId.alias, "avatar is opened with error.");
           return;
         }
@@ -982,7 +981,7 @@ fastify.get('/api/avatar/:id', (req, res) => {
             {
               if (err2.code != 'ENOENT')
               {
-                res.code(500).send({"info": "Server error while reading avatar."});
+                res.code(400).send({"info": "Error while reading avatar."});
                 console.log("info [user]: Error: user", userId.alias, "avatar is opened with error.");
                 return;
               }
@@ -1018,9 +1017,9 @@ fastify.get('/api/avatar/:id', (req, res) => {
   }
   catch(e)
   {
-    const dataStr = {"info": "Error: server error.", success: false};
+    const dataStr = {"info": "Error to get avatar.", success: false};
     const dataBack = JSON.stringify(dataStr);
-    res.code(500).send(dataBack);
+    res.code(400).send(dataBack);
     console.log(e);
     return;
   }

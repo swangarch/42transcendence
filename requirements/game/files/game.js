@@ -6,6 +6,7 @@ if (!process.env.JWT_SECRET || process.env.JWT_SECRET === "")
 const jwt_secret = process.env.JWT_SECRET;
 
 const WebSocket = require('ws');
+
 const jwt = require('jsonwebtoken');
 const cookie = require('cookie');
 
